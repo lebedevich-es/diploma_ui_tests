@@ -26,6 +26,7 @@ public class SearchTests extends BaseTest {
             "Nemiga",
             "Naviband"
     })
+    @DisplayName("Check search: ")
     @ParameterizedTest(name = "Verify that 'Top result' section is displayed for value: {0}")
     void searchTest(String title) {
         step("Open Search Page", () -> {
