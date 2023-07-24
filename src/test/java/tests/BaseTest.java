@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import config.SelenoidConfig;
 import config.UserConfig;
 import config.WebDriverConfig;
 import helpers.Attach;
@@ -21,6 +22,8 @@ public class BaseTest {
 
     static UserConfig userConfig = ConfigFactory.create(UserConfig.class, System.getProperties());
     static WebDriverConfig config = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
+    static SelenoidConfig selenoidConfig = ConfigFactory.create(SelenoidConfig.class, System.getProperties());
+
     String email = userConfig.getEmail();
     String password = userConfig.getPassword();
     String wrongPassword = userConfig.getWrongPassword();
@@ -29,15 +32,13 @@ public class BaseTest {
 
     @BeforeAll
     static void configure() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.browser = config.getBrowserName();
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.browserSize = config.getBrowserSize();
 
         if (config.isRemote()) {
-            Configuration.remote = config.getRemoteUrl();
+            Configuration.remote = selenoidConfig.getSelenoidUrl();
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
@@ -46,9 +47,8 @@ public class BaseTest {
     }
 
     @BeforeEach
-    void declineCookies() {
-        open("");
-        $("button[id='onetrust-accept-btn-handler']").click();
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
     @AfterEach

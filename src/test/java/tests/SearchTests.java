@@ -32,6 +32,9 @@ public class SearchTests extends BaseTest {
         step("Open Search Page", () -> {
             open("/search");
         });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
+        });
         step("Enter '" + title + "' in the search input", () -> {
             searchPage.setValueToSearchInput(title);
         });
@@ -45,6 +48,9 @@ public class SearchTests extends BaseTest {
     void searchNoResultTest() {
         step("Open Search Page", () -> {
             open("/search");
+        });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
         });
         step("Enter '-' in the search input", () -> {
             searchPage.setValueToSearchInput(" ");

@@ -16,6 +16,7 @@ import static io.qameta.allure.Allure.step;
 @Feature("Playlist")
 @Owner("lebedevich-es")
 public class PlaylistTests extends BaseTest {
+
     private String playlistName = "";
 
     static PlaylistPage playlistPage = new PlaylistPage();
@@ -25,6 +26,9 @@ public class PlaylistTests extends BaseTest {
     void createNewPlaylistTest() {
         step("Open Home Page", () -> {
             open("");
+        });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
         });
         step("Login with correct credentials", () -> {
             loginPage.clickLoginButton()
@@ -45,6 +49,9 @@ public class PlaylistTests extends BaseTest {
     void addSongToPlaylistTest() {
         step("Open Home Page", () -> {
             open("");
+        });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
         });
         step("Login with correct credentials", () -> {
             loginPage.clickLoginButton()
@@ -71,6 +78,9 @@ public class PlaylistTests extends BaseTest {
     void removePlaylistTest() {
         step("Open Home Page", () -> {
             open("");
+        });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
         });
         step("Login with correct credentials", () -> {
             loginPage.clickLoginButton()
@@ -101,6 +111,9 @@ public class PlaylistTests extends BaseTest {
     void editPlaylistInfoTest() {
         step("Open Home Page", () -> {
             open("");
+        });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
         });
         step("Login with correct credentials", () -> {
             loginPage.clickLoginButton()

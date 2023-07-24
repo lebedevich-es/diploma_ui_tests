@@ -4,6 +4,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 gradle/wrapper
+notifications/telegram.json
+gradlew
+gradlew.bat
+settings.gradle
+*.properties
 ### IntelliJ IDEA ###
 .idea
 .idea/modules.xml

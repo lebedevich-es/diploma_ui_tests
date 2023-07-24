@@ -12,7 +12,8 @@ public class LoginPage {
             usernameField = $("[data-testid='login-username']"),
             passwordField = $("[data-testid='login-password']"),
             avatar = $("[data-testid='user-widget-link']"),
-            banner = $("[data-encore-id='banner']");
+            banner = $("[data-encore-id='banner']"),
+            declineCookiesButton = $("button[id='onetrust-accept-btn-handler']");
 
     public LoginPage setEmail(String email) {
         usernameField.setValue(email);
@@ -41,6 +42,11 @@ public class LoginPage {
 
     public LoginPage checkFailedLogin() {
         banner.shouldBe(Condition.visible);
+        return this;
+    }
+
+    public LoginPage declineCookies() {
+        declineCookiesButton.click();
         return this;
     }
 }

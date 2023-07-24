@@ -20,6 +20,9 @@ public class LoginTests extends BaseTest {
         step("Open Home Page", () -> {
             open("");
         });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
+        });
         step("Click 'Log in' button", () -> {
             loginPage.clickLoginButton();
         });
@@ -42,6 +45,9 @@ public class LoginTests extends BaseTest {
     void failedLoginTest() {
         step("Open Home Page", () -> {
             open("");
+        });
+        step("Decline cookies", () -> {
+            loginPage.declineCookies();
         });
         step("Click 'Log in' button", () -> {
             loginPage.clickLoginButton();
