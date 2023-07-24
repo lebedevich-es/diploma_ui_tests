@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:properties/selenoid.properties"
+        "classpath:selenoid.properties"
 })
 public interface SelenoidConfig extends Config {
 
